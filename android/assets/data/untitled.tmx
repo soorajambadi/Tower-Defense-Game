@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="42" height="28" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dfa" tilewidth="32" tileheight="32">
+  <image source="dfa.png" width="1024" height="512"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="42" height="28">
+  <data encoding="base64" compression="zlib">
+   eJztljEOgCAMRTmNehL1JOoMd1BnuLB/YOiAiSBgI33JS9Ppd2jSKsWXDvZwYJ43wgnOlTJT8xa4wg1qaHzVgd5kyKR5MezwgCe00PlqA73LkEnzavFFZsuEdpojoZ0W/ge3fby7Adz28ckNKEntnyQGOtubn6Q0dLbUH6EGdDbO95rzbIIgCEKbXEzfJ78=
+  </data>
+ </layer>
+ <objectgroup name="ob1" width="42" height="28">
+  <object name="1" x="388" y="69" width="95" height="121">
+   <properties>
+    <property name="type" value="1"/>
+   </properties>
+  </object>
+  <object name="2" x="642" y="226" width="41" height="62">
+   <properties>
+    <property name="type" value="2"/>
+   </properties>
+  </object>
+  <object name="3" x="192" y="93" width="68" height="66">
+   <properties>
+    <property name="type" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
