@@ -1,0 +1,20 @@
+Make it in to a presentable state. 
+
+This iteration:
+	Implement save functionality. (1) 
+	You need to go to a specific level, to pass one level. In next level new map, 
+	with different enemy attacks. You need energy to go to next level. Once you reach 
+	10 levels game ends. 
+	Give some motivation to people to play other newer levels. Like new updates, new type of enemies etc. 
+	Implement rainy season, where your units slow down. 
+	
+Ideas for next iteration: 
+
+	You need to increase your population.
+	People are in different planets.
+	You can make your own planet. You can control its size, gravity etc. 
+	Connect different planets to build a system, which is powerful. 
+	Like one planet is for producing oil with high gravity values, Other for people
+	Multiplayer (too huge undertaking). 
+	Make different stages of development like iron age, bronze age etc. 
+	Different seasons. 
