@@ -33,8 +33,8 @@ public class SteamAttackers {
 						if(l.isAlive() == false) {
 							world.getLinks().removeValue(l, false);
 							toBeAttackedLink.removeValue(l, false);
-							l.t1.removeLink(l);
-							l.t2.removeLink(l);
+							l.getTower1().removeLink(l);
+							l.getTower2().removeLink(l);
 						}
 					}
 					

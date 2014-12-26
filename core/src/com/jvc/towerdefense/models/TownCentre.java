@@ -44,6 +44,7 @@ public class TownCentre extends Tower {
 		super(pos);
 		totalSteam = 1000f;
 		enemiesFaced = 0;
+         name = "tower0";
 	 }
 	 
 	 public void addEnemiesFaced(int delta) {

@@ -2,11 +2,12 @@ package com.jvc.towerdefense.models;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.jvc.towerdefense.manager.InstanceManager;
 
 public class Link {
     
-    public Tower t1;
-    public Tower t2;
+    public String t1;
+    public String t2;
     public Vector2 t1pos;
     public Vector2 t2pos;
     private Vector2 vel;
@@ -23,12 +24,16 @@ public class Link {
     public boolean isAlive;
     public float linkCost=100f;
     
-    public Link() {
+    /**public Link() {
     	System.out.println("Link Constructor");
+    }**/
+
+    public Link() {
+        System.out.println("Link ");
     }
     public Link(Tower t1, Tower t2) {
-		this.t1 = t1;
-		this.t2 = t2;
+		this.t1 = t1.name;
+		this.t2 = t2.name;
 		t1pos = t1.getPosition();
 		t2pos = t2.getPosition();
 		vel = new Vector2(t1pos).sub(t2pos);
@@ -41,7 +46,14 @@ public class Link {
 		this.isAlive = true;
 		currentStrength = STRENGTH;
     }
-    
+
+    public Tower getTower1() {
+        return InstanceManager.getInstance().getTowerByName(t1);
+    }
+
+    public Tower getTower2() {
+        return InstanceManager.getInstance().getTowerByName(t2);
+    }
     public float getUpgradeCost() {
     	return length*upgradeCostUnit;
     }

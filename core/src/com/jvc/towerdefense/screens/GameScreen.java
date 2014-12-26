@@ -7,7 +7,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
-import com.jvc.towerdefense.controller.GameSaver;
+import com.jvc.towerdefense.manager.GameSaver;
 import com.jvc.towerdefense.controller.WorldController;
 import com.jvc.towerdefense.manager.InstanceManager;
 import com.jvc.towerdefense.models.World;
@@ -86,7 +86,8 @@ public class GameScreen implements Screen, InputProcessor{
     		((Game) Gdx.app.getApplicationListener()).setScreen(InstanceManager.getInstance().getMainMenuScreen());
     	}
     	if(keycode == Input.Keys.S) {
-    		g.saveGame();
+    		g.saveGame(world);
+
     	}
     	else if(keycode == Input.Keys.L)
 			g.loadGame();

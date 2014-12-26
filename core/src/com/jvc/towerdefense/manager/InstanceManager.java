@@ -20,6 +20,7 @@ import com.jvc.towerdefense.models.Person;
 import com.jvc.towerdefense.models.Soldier;
 import com.jvc.towerdefense.models.Store;
 import com.jvc.towerdefense.models.Tower;
+import com.jvc.towerdefense.models.TownCentre;
 import com.jvc.towerdefense.models.Tree;
 import com.jvc.towerdefense.particlesystem.BigBubbleParticleEmitter;
 import com.jvc.towerdefense.particlesystem.BubbleParticleEmitter;
@@ -42,6 +43,7 @@ public class InstanceManager {
 	public OrthographicCamera cam;
 	public Vector3 camPosition;
 	public Vector2 startMapLocation = new Vector2(0f,0f);
+    TownCentre tCentre;
 	Array<Tree> trees = new Array<Tree>();
 	Array<Link> links = new Array<Link>();
 	Array<House> houses = new Array<House>();
@@ -68,6 +70,7 @@ public class InstanceManager {
 	public TileManager tManager;
 	public Entity currentSelection;
 	public static GameScreen savedScreen;
+    static int name=0;
 	
 	public void setGraphics(int width, int height, float WIDTH, float HEIGHT) {
 		gHeight = height;
@@ -141,12 +144,26 @@ public class InstanceManager {
 		}
 		return instance;
 	}
-	
+
+    public TownCentre makeTowerCentre()
+    {
+        tCentre = new TownCentre(new Vector2(10, 7));
+        return tCentre;
+    }
+    public String getNewTowerName() {
+        name += 1;
+        return "tower"+name;
+    }
+    public Tower getTowerbyId(int id)
+    {
+        return towers.get(id);
+    }
 	public float getTotalFood() {
 		return totalFood;
 	}
 	
-	
+	public TownCentre getTownCentre() {return tCentre;}
+
 	public Array<Tower> getTowers() {
 		return towers;
 	}
@@ -272,4 +289,14 @@ public class InstanceManager {
 		//((Game) Gdx.app.getApplicationListener()).setScreen(savedScreen);
 		
 	}
+
+    public Tower getTowerByName(String name) {
+        if(name == "tower0")
+            return tCentre;
+        for(Tower t : towers) {
+            if(t.name == name)
+                return t;
+        }
+        return null;
+    }
 }

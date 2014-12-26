@@ -66,10 +66,10 @@ public class GraphManager {
 			visited.add(false);
 		visited.set(world.getTowers().indexOf(t1, false), true);
 		for(Link l : oLinks) {
-			if(l.t1 == t1)
-				q.addLast(l.t2);
-			else if(l.t2 == t1)
-				q.addLast(l.t1);
+			if(l.t1 == t1.name)
+				q.addLast(InstanceManager.getInstance().getTowerByName(l.t2));
+			else if(l.t2 == t1.name)
+				q.addLast(InstanceManager.getInstance().getTowerByName(l.t1));
 		}
 		try {
 		Tower popped = q.pop();
@@ -80,10 +80,10 @@ public class GraphManager {
 				//oLinks = popped.getLinks(world.getLinks());
 				oLinks = popped.getTowerLinks();
 				for(Link l : oLinks) {
-					if(l.t1 == popped)
-						q.addLast(l.t2);
-					else if(l.t2 == popped)
-						q.addLast(l.t1);
+					if(l.t1 == popped.name)
+						q.addLast(InstanceManager.getInstance().getTowerByName(l.t2));
+					else if(l.t2 == popped.name)
+						q.addLast(InstanceManager.getInstance().getTowerByName(l.t1));
 				}
 				visited.set(world.getTowers().indexOf(popped, false), true);
 			}

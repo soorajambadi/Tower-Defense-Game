@@ -21,7 +21,8 @@ public class World implements MapLoading{
     Array<Barracks> barracks;
     Array<Tree> trees;
     Menu menu = new Menu(this);
-    TownCentre tCentre = new TownCentre(new Vector2(10, 7));
+    //TownCentre tCentre = new TownCentre(new Vector2(10, 7));
+    TownCentre tCentre;
     Earthquake eQuake;
     AsteroidShower aShower;
     public float currentSeasonTime=0.0f;
@@ -125,6 +126,7 @@ public class World implements MapLoading{
     	houses = InstanceManager.getInstance().getHouses();
     	trees = InstanceManager.getInstance().getTrees();
     	barracks = InstanceManager.getInstance().getBarracks();
+        tCentre = InstanceManager.getInstance().makeTowerCentre();
     	//createDemoWorld();
     }
     
@@ -135,8 +137,8 @@ public class World implements MapLoading{
 			if(Intersector.intersectLines(l.getStartPosition(), l.getEndPosition(), 
 					eQuake.getStartPosition(), eQuake.getEndPosition(), intersection)) {
 				links.removeValue(l, false);
-				l.t1.removeLink(l);
-				l.t2.removeLink(l);
+				l.getTower1().removeLink(l);
+				l.getTower2().removeLink(l);
 			}
 		}
 		for(Tower t: towers) {
@@ -144,8 +146,8 @@ public class World implements MapLoading{
                     eQuake.getEndPosition().y, t.getPosition().x, t.getPosition().y )<.1f) {
 				//if(t.isSelected) Handle this
 				for(Link l: t.getTowerLinks()) {
-					l.t1.removeLink(l);
-					l.t2.removeLink(l);
+					l.getTower1().removeLink(l);
+					l.getTower2().removeLink(l);
 				}
 				towers.removeValue(t, false);
 				System.out.println("Earth quake removed me");
@@ -164,16 +166,16 @@ public class World implements MapLoading{
 			if(Intersector.distanceLinePoint(l.getEndPosition().x, l.getEndPosition().y, l.getStartPosition().x,
                     l.getStartPosition().y, aShower.getPosition().x, aShower.getPosition().y) < aShower.getRadius()) {
 				links.removeValue(l, false);
-				l.t1.removeLink(l);
-				l.t2.removeLink(l);
+				l.getTower1().removeLink(l);
+				l.getTower2().removeLink(l);
 			}
 		}
 		for(Tower t: towers) {
 			if(t.getPosition().dst(aShower.getPosition())<aShower.getRadius()) {
 				//if(t.isSelected) Handle this
 				for(Link l: t.getTowerLinks()) {
-					l.t1.removeLink(l);
-					l.t2.removeLink(l);
+					l.getTower1().removeLink(l);
+					l.getTower2().removeLink(l);
 				}
 				towers.removeValue(t, false);
 				System.out.println("Asteroid Shower removed me");
@@ -194,8 +196,8 @@ public class World implements MapLoading{
 	}
 	Link nLink = new Link(towers.get(0), tCentre);
 	links.add(nLink);
-	nLink.t1.addLink(nLink);
-	nLink.t2.addLink(nLink);
+	nLink.getTower1().addLink(nLink);
+	nLink.getTower2().addLink(nLink);
     }
     
     public void createTree(float x, float y) {
@@ -270,21 +272,21 @@ public class World implements MapLoading{
     	else if(t1 == -1) {
     		Link nLink = new Link(tCentre, towers.get(t2));
     		links.add(nLink);
-    		nLink.t2.addLink(nLink);
-    		nLink.t1.addLink(nLink);
+    		nLink.getTower2().addLink(nLink);
+    		nLink.getTower1().addLink(nLink);
     		
     	}
     	else if(t2 == -1) {
     		Link nLink = new Link(tCentre, towers.get(t1));
     		links.add(nLink);
-    		nLink.t2.addLink(nLink);
-    		nLink.t1.addLink(nLink);
+    		nLink.getTower2().addLink(nLink);
+    		nLink.getTower1().addLink(nLink);
     	}
     	else {
     		Link nLink = new Link(towers.get(t1), towers.get(t2));
     		links.add(nLink);
-    		nLink.t1.addLink(nLink);
-    		nLink.t2.addLink(nLink);
+    		nLink.getTower1().addLink(nLink);
+    		nLink.getTower2().addLink(nLink);
     	}
     	getTownCentre().consumeSteam(cost);
     }

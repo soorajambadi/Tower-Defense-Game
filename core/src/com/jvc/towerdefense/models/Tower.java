@@ -9,7 +9,8 @@ import com.jvc.towerdefense.controller.TowerMenu;
 import com.jvc.towerdefense.manager.InstanceManager;
 
 public class Tower extends Entity {
-    
+
+    public String name;
     public static final float HEIGHT = 1f;
     public static final float WIDTH = 1f;
     public float RANGE = 3f;
@@ -34,7 +35,7 @@ public class Tower extends Entity {
     };
     
     public Tower() {
-    	System.out.println("DfD");
+    	System.out.println("Tower Constructor");
     }
     
     public int bulletCount = 0;
@@ -66,6 +67,7 @@ public class Tower extends Entity {
 		lastUID = lastUID + 1;
 		towerMenu = new TowerMenu();
 		currentTime=0.0f;
+        name = InstanceManager.getInstance().getNewTowerName();
     }
     
     public Vector2 getPosition() {
@@ -87,7 +89,7 @@ public class Tower extends Entity {
     public Array<Link> getLinks( Array<Link> links) {
     	Array<Link> rlinks = new Array<Link>();
     	for(Link link : links) {
-    		if(link.t1 == this || link.t2 == this) {
+    		if(link.getTower1() == this || link.getTower2() == this) {
     			if(link.isAlive)
     				rlinks.add(link);
     		}
