@@ -22,6 +22,10 @@ public class Person {
 		//velocity = new Vector2(2f, 2f);
 		rotation = velocity.angle();
 	}
+
+    public Person() {
+        System.out.println("Person constructor");
+    }
 	
 	public void update(float delta) {
 		position.add(velocity.x*delta, velocity.y*delta);

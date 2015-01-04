@@ -18,6 +18,7 @@ public class AsteroidShower {
 		int y = random.nextInt(14);
 		position = new Vector2(x, y);
 		radius = 2;
+        System.out.println(" In Asteroid Shower Constructor ");
 	}
 	
 	public AsteroidShower(Vector2 pos, int radius) {

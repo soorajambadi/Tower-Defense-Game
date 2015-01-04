@@ -5,7 +5,6 @@ import com.jvc.towerdefense.manager.InstanceManager;
 
 public class House extends Entity {
 
-	public Vector2 position;
 	public static float WIDTH = 1f;
 	public static float HEIGHT = 1f;
 	public static int CAPACITY = 10;
@@ -13,10 +12,14 @@ public class House extends Entity {
 	public static float cost=10f;
 	
 	public House(Vector2 pos) {
-		super();
-		this.position = pos;
+		//super();
+		this.position = new Vector2(pos);
 		//cost = 20f;
 	}
+
+    public House() {
+        System.out.println("In House constructor");
+    }
 	
 	public Vector2 getPosition() {
 		return position;

@@ -25,6 +25,7 @@ public class Earthquake {
 		rotation = vel.angle();
 		/* We manipulate scale and rotation for rendering purposes */
 		scaling = vel.len2();
+        System.out.println(" In EarthQuake Constructor ");
 	}
 	
 	public Vector2 getStartPosition() {

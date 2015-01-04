@@ -14,6 +14,10 @@ public class GraphManager {
 	Array<GraphNode> nodes = new Array<GraphNode>();
 	**/
 	private World world;
+
+    public GraphManager() {
+        System.out.println(" In Graph Manager Constructor ");
+    }
 	public GraphManager(World world) {
 		this.world = world;
 	}

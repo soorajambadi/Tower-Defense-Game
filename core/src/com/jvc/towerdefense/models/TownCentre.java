@@ -6,7 +6,7 @@ import com.jvc.towerdefense.manager.InstanceManager;
 public class TownCentre extends Tower {
 	// Steam is stored in townCentre 
 	// Food is stored in Food store
-	
+
 	 public static final float HEIGHT = 2f;
 	 public static final float WIDTH = 2f;
 	 public float RANGE = 3f;
@@ -39,7 +39,7 @@ public class TownCentre extends Tower {
 		 if(totalSteam < 0.0f)
 			 isAlive=false;
 	 }
-	 
+
 	 public TownCentre(Vector2 pos) {
 		super(pos);
 		totalSteam = 1000f;
@@ -54,6 +54,7 @@ public class TownCentre extends Tower {
 	 public TownCentre() {
 		 System.out.println("Towncentre constructor");
 	 }
+
 	 public float getTotalSteam() {
 		 return totalSteam;
 	 }

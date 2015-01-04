@@ -13,7 +13,11 @@ public class Store extends Entity {
 	public static float RANGE=3f;
 	public float currentStorage=0;
 	public float foodProductionRate=0;
-	
+
+    public Store() {
+        System.out.println(" In Store Constructor");
+    }
+
 	public Store(Vector2 pos) {
 		position = pos;
 	}

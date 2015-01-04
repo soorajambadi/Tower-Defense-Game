@@ -1,7 +1,8 @@
 Make it in to a presentable state. 
 
 This iteration:
-	Implement save functionality. (1) 
+	Implement save functionality. (1)
+	Implement level functionality. (2)
 	You need to go to a specific level, to pass one level. In next level new map, 
 	with different enemy attacks. You need energy to go to next level. Once you reach 
 	10 levels game ends. 

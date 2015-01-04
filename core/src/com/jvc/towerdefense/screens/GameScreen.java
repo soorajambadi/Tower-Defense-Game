@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 import com.jvc.towerdefense.manager.GameSaver;
@@ -27,8 +28,8 @@ public class GameScreen implements Screen, InputProcessor{
     
     @Override
     public void render(float delta) {
-		//Gdx.gl.glClearColor(1f, 0f, 0f, .1f);
-		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClearColor(1f, 0f, 0f, .1f);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		controller.update(delta);
 		renderer.render(delta);
     }
@@ -52,6 +53,14 @@ public class GameScreen implements Screen, InputProcessor{
     		controller = new WorldController(world);
 		Gdx.input.setInputProcessor(this);
 	
+    }
+
+    public void restartWithWorld(World w) {
+        //this.world = world;
+        this.world = new World();
+        renderer = new WorldRenderer(world);
+        controller = new WorldController(world);
+        Gdx.input.setInputProcessor(this);
     }
     
 
@@ -81,7 +90,7 @@ public class GameScreen implements Screen, InputProcessor{
 
     @Override
     public boolean keyDown(int keycode) {
-    	GameSaver g = new GameSaver(world);
+    	GameSaver g = new GameSaver(new World());
     	if(keycode == Input.Keys.B) {
     		((Game) Gdx.app.getApplicationListener()).setScreen(InstanceManager.getInstance().getMainMenuScreen());
     	}
@@ -89,8 +98,10 @@ public class GameScreen implements Screen, InputProcessor{
     		g.saveGame(world);
 
     	}
-    	else if(keycode == Input.Keys.L)
-			g.loadGame();
+    	else if(keycode == Input.Keys.L) {
+            World w = g.loadGame();
+            restartWithWorld(w);
+        }
     	
     	//Implementation is wrong here. 
     	int w = Gdx.graphics.getWidth();

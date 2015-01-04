@@ -15,6 +15,10 @@ public class Barracks extends House {
 		super(pos);
 		bMenu = new BarracksMenu();
 	}
+
+    public Barracks() {
+        System.out.println("In Barracks Constructor");
+    }
 	
 	public void createKnight(Vector2 pos) {
 		Soldier knight = new Soldier(pos, 0);

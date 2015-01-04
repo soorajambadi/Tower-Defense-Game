@@ -25,7 +25,7 @@ public class Tower extends Entity {
     private Array<Link> tLinks = new Array<Link>();
     private final Array<Bullet> activeBullets = new Array<Bullet>();
     
-    private final Pool<Bullet> bulletPool = new Pool<Bullet>() {
+    private final transient Pool<Bullet> bulletPool = new Pool<Bullet>() {
     @Override
     
     protected Bullet newObject() {
@@ -48,13 +48,14 @@ public class Tower extends Entity {
 	public float towerCost=200f;
 	public float productionRate = 1f;
     
-    private Vector2 position = new Vector2();
+    //private Vector2 position = new Vector2();
     private Rectangle bounds = new Rectangle();
     public TowerMenu towerMenu;
     public boolean isAlive;
     public static float cost=50f;
     
     public Tower(Vector2 pos) {
+        this.position = new Vector2();
 		this.position.x = MathUtils.floor(pos.x);
 		this.position.y = MathUtils.floor(pos.y);
 		currentStrength = STRENGTH;

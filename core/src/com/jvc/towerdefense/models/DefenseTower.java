@@ -11,6 +11,11 @@ public class DefenseTower extends Tower{
 			super(pos);
 	}
 
+    public DefenseTower()
+    {
+        System.out.println("In defense tower constructor ");
+    }
+
 	public boolean isPowered() {
 		return isPowered;
 	}

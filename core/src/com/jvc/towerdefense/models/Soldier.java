@@ -71,7 +71,7 @@ public class Soldier extends Enemy {
 	}
 	
 	public Soldier() {
-		
+		System.out.println(" In Soldier Constructor ");
 	}
 	
 	public void update(float delta) {

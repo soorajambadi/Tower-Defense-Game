@@ -37,10 +37,10 @@ public class InstanceManager {
 	public Vector3 camPosBeforeBuildScreen = new Vector3(0,0,0);
 	public Entity activeEntity = null;
 	int mapSizeX = 42;
-	GameScreen gScreen = null;
+	transient GameScreen gScreen = null;
 	Screen mScreen = null;
 	int mapSizeY = 28;
-	public OrthographicCamera cam;
+	transient public OrthographicCamera cam;
 	public Vector3 camPosition;
 	public Vector2 startMapLocation = new Vector2(0f,0f);
     TownCentre tCentre;
@@ -54,10 +54,10 @@ public class InstanceManager {
 	Array<Soldier> soldiers = new Array<Soldier>();
 	Array<DefenseTower> defenseTowers = new Array<DefenseTower>();
 	Array<Barracks> barracks = new Array<Barracks>();
-	public BubbleParticleEmitter bubbleParticles = new BubbleParticleEmitter();
-	public BigBubbleParticleEmitter bigBubbleParticles = new BigBubbleParticleEmitter();
-	public SparkParticleEmitter sparkParticles = new SparkParticleEmitter();
-	public ExplosionParticleEmitter explosionParticles = new ExplosionParticleEmitter();
+	transient public BubbleParticleEmitter bubbleParticles = new BubbleParticleEmitter();
+    transient public BigBubbleParticleEmitter bigBubbleParticles = new BigBubbleParticleEmitter();
+    transient public SparkParticleEmitter sparkParticles = new SparkParticleEmitter();
+    transient public ExplosionParticleEmitter explosionParticles = new ExplosionParticleEmitter();
 	private float totalFood;
 	private int totalPopulation;
 	public Random random;
@@ -67,9 +67,9 @@ public class InstanceManager {
 	public float ppuY = 0f;
 	public float WIDTH;
 	public float HEIGHT;
-	public TileManager tManager;
+    transient public TileManager tManager;
 	public Entity currentSelection;
-	public static GameScreen savedScreen;
+    transient public static GameScreen savedScreen;
     static int name=0;
 	
 	public void setGraphics(int width, int height, float WIDTH, float HEIGHT) {
@@ -144,6 +144,10 @@ public class InstanceManager {
 		}
 		return instance;
 	}
+
+    public static void setcurrentInstance(InstanceManager m) {
+        instance = m;
+    }
 
     public TownCentre makeTowerCentre()
     {
@@ -298,5 +302,13 @@ public class InstanceManager {
                 return t;
         }
         return null;
+    }
+
+    public void setTowers(Array<Tower> towers) {
+        this.towers = towers;
+    }
+
+    public void setLinks(Array<Link> links) {
+        this.links = links;
     }
 }

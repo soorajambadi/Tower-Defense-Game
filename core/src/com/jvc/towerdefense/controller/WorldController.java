@@ -69,6 +69,10 @@ public class WorldController implements EventHandler {
 	    sController = new SeasonController(world);
 	    sAttackers = new SteamAttackers(world);
     }
+
+    public WorldController() {
+        System.out.println(" In World Controller Constructor ");
+    }
     
     public void setActiveTower(int tower) {
     	activeTower = tower;

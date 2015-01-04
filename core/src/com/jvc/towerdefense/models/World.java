@@ -11,16 +11,16 @@ import com.jvc.towerdefense.view.WorldRenderer;
 
 public class World implements MapLoading{
     
-    public Vector2 activePortion = new Vector2(-1,1);
+    public Vector2 activePortion;
     Array<Tower> towers;
-    Array<Enemy> enemies = new Array<Enemy>();
-    Array<Link> links = new Array<Link>();
+    Array<Enemy> enemies;
+    Array<Link> links;
     Array<DefenseTower> defenseTowers;
     Array<Store> stores;
     Array<House> houses;
     Array<Barracks> barracks;
     Array<Tree> trees;
-    Menu menu = new Menu(this);
+    transient public Menu menu ;
     //TownCentre tCentre = new TownCentre(new Vector2(10, 7));
     TownCentre tCentre;
     Earthquake eQuake;
@@ -127,6 +127,8 @@ public class World implements MapLoading{
     	trees = InstanceManager.getInstance().getTrees();
     	barracks = InstanceManager.getInstance().getBarracks();
         tCentre = InstanceManager.getInstance().makeTowerCentre();
+        activePortion  = new Vector2(-1,1);
+        menu = new Menu(this);
     	//createDemoWorld();
     }
     
