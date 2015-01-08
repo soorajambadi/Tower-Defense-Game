@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
@@ -122,6 +123,10 @@ public class GameScreen implements Screen, InputProcessor{
     		renderer.getCamera().position.set(camPos);
     		renderer.getCamera().update();
     	}
+        else if(keycode == Input.Keys.R) {
+            renderer.getCamera().rotate(10);
+            renderer.getCamera().update();
+        }
     	return false;
     }
 
