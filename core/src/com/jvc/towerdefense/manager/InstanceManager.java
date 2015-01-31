@@ -17,6 +17,7 @@ import com.jvc.towerdefense.models.Entity;
 import com.jvc.towerdefense.models.House;
 import com.jvc.towerdefense.models.Link;
 import com.jvc.towerdefense.models.Person;
+import com.jvc.towerdefense.models.Plant;
 import com.jvc.towerdefense.models.Soldier;
 import com.jvc.towerdefense.models.Store;
 import com.jvc.towerdefense.models.Tower;
@@ -29,7 +30,6 @@ import com.jvc.towerdefense.particlesystem.SparkParticleEmitter;
 import com.jvc.towerdefense.screens.GameScreen;
 import com.jvc.towerdefense.screens.MainMenu;
 import com.jvc.towerdefense.screens.MapSelectorScreen;
-import com.jvc.towerdefense.screens.TargetWorldScreen;
 
 public class InstanceManager {
 	
@@ -54,6 +54,7 @@ public class InstanceManager {
 	Array<Soldier> soldiers = new Array<Soldier>();
 	Array<DefenseTower> defenseTowers = new Array<DefenseTower>();
 	Array<Barracks> barracks = new Array<Barracks>();
+    Array<Plant> plants = new Array<Plant>();
 	transient public BubbleParticleEmitter bubbleParticles = new BubbleParticleEmitter();
     transient public BigBubbleParticleEmitter bigBubbleParticles = new BigBubbleParticleEmitter();
     transient public SparkParticleEmitter sparkParticles = new SparkParticleEmitter();
@@ -122,6 +123,7 @@ public class InstanceManager {
 		barracks = new Array<Barracks>();
 		soldiers = new Array<Soldier>();
 		links = new Array<Link>();
+        plants = new Array<Plant>();
 		bubbleParticles = new BubbleParticleEmitter();
 		bigBubbleParticles = new BigBubbleParticleEmitter();
 		sparkParticles = new SparkParticleEmitter();
@@ -171,6 +173,8 @@ public class InstanceManager {
 	public Array<Tower> getTowers() {
 		return towers;
 	}
+
+    public Array<Plant> getPlants() { return plants; }
 	
 	public Array<Store> getStores() {
 		return stores;

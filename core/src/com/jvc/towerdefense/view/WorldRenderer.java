@@ -26,12 +26,14 @@ import com.jvc.towerdefense.models.Enemy;
 import com.jvc.towerdefense.models.House;
 import com.jvc.towerdefense.models.Link;
 import com.jvc.towerdefense.models.Person;
+import com.jvc.towerdefense.models.Plant;
 import com.jvc.towerdefense.models.Soldier;
 import com.jvc.towerdefense.models.Store;
 import com.jvc.towerdefense.models.Tower;
 import com.jvc.towerdefense.models.TownCentre;
 import com.jvc.towerdefense.models.Tree;
 import com.jvc.towerdefense.models.World;
+import com.jvc.towerdefense.view.AnimationMaker.FrameBuilder;
 
 public class WorldRenderer {
     
@@ -49,11 +51,6 @@ public class WorldRenderer {
     public Texture bubbleTexture;
     public AtlasRegion selectionTexture;
     private TextureRegion pipeTexture;
-    private TextureRegion phoenix1;
-    private TextureRegion phoenix2;
-    private TextureRegion phoenix3;
-    private TextureRegion phoenix4;
-    private Texture phoenix;
     private AtlasRegion asteroidShowerTexture;
     private TextureRegion bulletTexture;
     private SpriteBatch spritebatch;
@@ -62,6 +59,7 @@ public class WorldRenderer {
     public float ppuX;
     public float ppuY;
     private Animation flyPhoenix;
+    private Animation plantTexture;
     private BitmapFont font;
     private Texture selectedtowerTexture;
     private Texture selectedtownCentreTexture;
@@ -230,7 +228,6 @@ public class WorldRenderer {
 		pipeTexture = new TextureRegion(new Texture("data/pipe.png"));
 		personTexture = ResourceManager.getInstance().personTexture;
 		//bulletTexture =new TextureRegion(new Texture("data/bullet.png"));
-		phoenix = new Texture("data/phoenix.png");
 		//townCenterTexture = new Texture("data/towncenter.png");
 		townCenterTexture = ResourceManager.getInstance().townCentre;
 		//bgTexture = new Texture("data/stonebg.JPG");
@@ -248,16 +245,11 @@ public class WorldRenderer {
 		menu3Texture = ResourceManager.getInstance().menu3Texture;
 		menu4Texture = ResourceManager.getInstance().menu4Texture;
 		menu5Texture = ResourceManager.getInstance().menu5Texture;
-		phoenix1 = new TextureRegion(phoenix, 0, 0, 95, 100);
-		phoenix2 = new TextureRegion(phoenix, 95, 0, 95, 100);
-		phoenix3 = new TextureRegion(phoenix, 190, 0, 95, 100);
-		phoenix4 = new TextureRegion(phoenix, 285, 0, 95, 100);
-		TextureRegion[] flyPhoenix = new TextureRegion[4];
-		flyPhoenix[0] = phoenix1;
-		flyPhoenix[1] = phoenix2;
-		flyPhoenix[2] = phoenix3;
-		flyPhoenix[3] = phoenix4;
+
+        TextureRegion[] flyPhoenix = new FrameBuilder("data/phoenix.png", 4, 4).getFrames();
+
 		this.flyPhoenix = new Animation(RUNNING_FRAME_DURATION, flyPhoenix);
+        plantTexture = new Animation(RUNNING_FRAME_DURATION*2, new FrameBuilder("data/plants.png", 14, 4).getFrames());
 		//effect = new ParticleEffect();
 		//effect.load(Gdx.files.external("jvc/TowerDefense/TowerDefense-android/assets/data/particle.p"), 
 			//Gdx.files.external("jvc/TowerDefense/TowerDefense-android/assets/data/"));
@@ -399,6 +391,7 @@ public class WorldRenderer {
 	
 //spritebatch.setShader(SpriteBatch.createDefaultShader());
 	spritebatch.begin();
+    drawSeasonSpecific(delta);
 	markActivePortion();
 	drawLinks(delta);
 	drawEnemies();
@@ -407,7 +400,6 @@ public class WorldRenderer {
 	renderStores(delta);
 	renderSoldiers(delta);
 	drawDefenseTowers();
-	drawMenu();
 	//drawTiles();
 	renderPeople(delta);
 	renderBarracks(delta);
@@ -417,13 +409,14 @@ public class WorldRenderer {
 	renderTrees(delta);
 	drawSpecificMenus();
 	drawScore();
+    drawMenu();
 	InstanceManager.getInstance().bigBubbleParticles.draw(spritebatch);
 	InstanceManager.getInstance().explosionParticles.draw(spritebatch);
 	InstanceManager.getInstance().bubbleParticles.draw(spritebatch);
 	InstanceManager.getInstance().sparkParticles.draw(spritebatch);
 	
 	spritebatch.end();
-	//fpsLogger.log();
+	fpsLogger.log();
     }
     
     public void renderSoldiers(float delta) {
@@ -566,5 +559,14 @@ public class WorldRenderer {
 						ppuX*(s1.add(link.getStartPosition()).scl(.5f).x), ppuY*(s2.add(link.getStartPosition()).scl(.5f).y));
 				}
 		}
+    }
+
+    public void drawSeasonSpecific(float delta) {
+        if(world.getCurrentSeason() < 5) {
+            for(Plant p : InstanceManager.getInstance().getPlants()) {
+                p.incrementStateTime(delta);
+                spritebatch.draw(plantTexture.getKeyFrame(p.getStateTime(), true), p.getPosition().x* ppuX, p.getPosition().y * ppuY, Plant.WIDTH *ppuX, Plant.HEIGHT * ppuY);
+            }
+        }
     }
 }

@@ -46,10 +46,10 @@ public class Enemy {
     public Vector2 getPosition() {
     	return position;
     }
-
     public Rectangle getBounds() {
     	return bounds;
     }
+
     public void update(float delta) {
 		position.add(velocity.x*delta, velocity.y*delta);
 		stateTime = stateTime + delta;

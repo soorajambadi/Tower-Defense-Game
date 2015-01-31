@@ -12,7 +12,7 @@ public class SeasonController {
 	// Season 1 -> Peaceful Season
 	// Season 2 -> Alien Season
 	// Season 3 -> Earthquake
-	// Season 4 -> Same as Season 1
+	// Season 4 -> Spring Season
 	public World world;
     float cTime1=0.0f;
     float cTime2=0.0f;
@@ -37,7 +37,8 @@ public class SeasonController {
 			// Here we are resetting cTime1 with setcurrentSeasonTime, so resetting cTime2 also.
 		}
 		if(world.getCurrentSeason() == 4)
-			world.setCurrentSeason(1);
+			//world.setCurrentSeason(1);
+            System.out.println("In Spring season");
 		else if(world.getCurrentSeason() == 2) {
 			toBeAttackedTower = world.getTowersToBeAttacked(3, world.getTowers());
 			toBeAttackedLink = world.getLinksToBeAttacked(3, world.getLinks());

@@ -65,7 +65,7 @@ public class WorldController implements EventHandler {
 	    cI.add(0f);
 	    cI.add(0f);
 	    loader = new MapLoader("maps/level1", world);
-	    //loader.loadMapToGame();
+	    loader.loadMapToGame();
 	    sController = new SeasonController(world);
 	    sAttackers = new SteamAttackers(world);
     }

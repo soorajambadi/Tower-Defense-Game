@@ -20,6 +20,7 @@ public class World implements MapLoading{
     Array<House> houses;
     Array<Barracks> barracks;
     Array<Tree> trees;
+    Array<Plant> plants;
     transient public Menu menu ;
     //TownCentre tCentre = new TownCentre(new Vector2(10, 7));
     TownCentre tCentre;
@@ -50,6 +51,8 @@ public class World implements MapLoading{
     		createTree(i%21, i/21);
     	if (c == 'S')
     		createStore(i%21, i/21);
+        if (c == 'P')
+            createPlant(i%21, i/21);
     	}
     
     public Array<DefenseTower> getDefenseTowers() {
@@ -128,6 +131,7 @@ public class World implements MapLoading{
     	barracks = InstanceManager.getInstance().getBarracks();
         tCentre = InstanceManager.getInstance().makeTowerCentre();
         activePortion  = new Vector2(-1,1);
+        plants = InstanceManager.getInstance().getPlants();
         menu = new Menu(this);
     	//createDemoWorld();
     }
@@ -216,6 +220,14 @@ public class World implements MapLoading{
 		int x1 = MathUtils.floor(x);
 		int y1 = MathUtils.floor(y);
 		InstanceManager.getInstance().getTileManager().addTile(x1*21+y1, s);
+    }
+
+    public void createPlant(float x, float y) {
+        Plant p = new Plant(new Vector2(x, y));
+        InstanceManager.getInstance().getPlants().add(p);
+        int x1 = MathUtils.floor(x);
+        int y1 = MathUtils.floor(y);
+        InstanceManager.getInstance().getTileManager().addTile(x1*21+y1, p);
     }
     
     public void createTower(float x, float y) {

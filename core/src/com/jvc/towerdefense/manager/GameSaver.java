@@ -56,46 +56,17 @@ public class GameSaver {
 
 
     public boolean saveGame(World world) {
-        //saveDataValue("towers", world.getTowers());
-        //saveDataValue("links", world.getLinks());
         InstanceManager manager = InstanceManager.getInstance();
         System.out.println(json.prettyPrint(manager));
         saveDataValue("instance", InstanceManager.getInstance());
-		//Seems like the pool object is causing some problems
-		/**
-        saveFile.writeString(json.toJson(world.getTowers(), Array.class, Tower.class), false);
-		System.out.println(json.toJson(world.getTowers()));
-		saveFile.writeString(json.toJson(world.getLinks(), Array.class, Link.class), true);
-		System.out.println(json.toJson(world.getLinks(), Array.class, Link.class));
-        **/
-		//saveFile.writeString(json.toJson(world, World.class), false);
-		//System.out.println(json.toJson(world, World.class));
 
 		return true;
 	}
 	
 	public World loadGame() {
         save = getSave();
-        //Array<Tower> towers = loadDataValue("towers", Array.class);
-        //Array<Link> links = loadDataValue("links", Array.class);
-		//Array<Tower> towers = json.fromJson(Array.class, Tower.class, saveFile);
-		//world.loadTowerFromFile(towers);
-		//Array<Link> links = json.fromJson(Array.class, Link.class, saveFile);
-        //System.out.println(links);
-        //System.out.println(json.fromJson(World.class, saveFile));
-		////World world2 = json.fromJson(World.class, saveFile);
-        //world.menu = new Menu(world);
-        //World li = json.fromJson(World.class, saveFile);
-		//world.loadLinksFromFile(world2.getLinks());
-		//return world2;
-        //InstanceManager.getInstance().setTowers(towers);
-        //InstanceManager.getInstance().setLinks(links);
-        //world.loadTowerFromFile(towers);
-        //world.loadLinksFromFile(links);
         InstanceManager m = loadDataValue("instance", InstanceManager.class);
         InstanceManager.setcurrentInstance(m);
         return world;
-
-        //InstanceManager manager = json.fromJson(InstanceManager.class, text);
 	}
 }
