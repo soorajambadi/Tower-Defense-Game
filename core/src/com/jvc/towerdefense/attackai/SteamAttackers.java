@@ -50,6 +50,19 @@ public class SteamAttackers {
 						}
 						// Defense Tower doesn't have any links
 					}
+
+                    for(Tower t : InstanceManager.getInstance().getTowers()) {
+                        if(enemy.inRange(t))
+                            enemy.fireTower(t, delta);
+                        //t.takeHit(enemy.POWER);
+                        if(t.isAlive == false) {
+                            InstanceManager.getInstance().getTileManager().
+                                    addTile(MathUtils.floor(t.getPosition().x)*21 + MathUtils.floor(t.getPosition().y), null);
+                            InstanceManager.getInstance().getTowers().removeValue(t, false);
+                            toBeAttackedTower.removeValue(t, false);
+                        }
+                        // Defense Tower doesn't have any links
+                    }
 				}
 	}
 }

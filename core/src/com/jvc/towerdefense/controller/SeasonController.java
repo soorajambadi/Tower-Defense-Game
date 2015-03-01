@@ -37,8 +37,8 @@ public class SeasonController {
 			// Here we are resetting cTime1 with setcurrentSeasonTime, so resetting cTime2 also.
 		}
 		if(world.getCurrentSeason() == 4)
-			//world.setCurrentSeason(1);
-            System.out.println("In Spring season");
+			world.setCurrentSeason(1);
+            //System.out.println("In Spring season");
 		else if(world.getCurrentSeason() == 2) {
 			toBeAttackedTower = world.getTowersToBeAttacked(3, world.getTowers());
 			toBeAttackedLink = world.getLinksToBeAttacked(3, world.getLinks());
@@ -51,8 +51,8 @@ public class SeasonController {
 						// Changed from mul to scl
 						Enemy newEnemy = new Enemy(new Vector2(5, 2), velocity);
 						world.getEnemies().add(newEnemy);
-						//if(newEnemy.inRange(t))
-							//t.takeHit(newEnemy.POWER);
+						if(newEnemy.inRange(t))
+							t.takeHit(newEnemy.POWER);
 						world.getTownCentre().addEnemiesFaced(1);
 						/* if(t.isAlive == false) {
 							for(Link l : t.getTowerLinks())

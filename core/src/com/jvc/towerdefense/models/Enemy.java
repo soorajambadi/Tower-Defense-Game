@@ -10,15 +10,15 @@ public class Enemy {
     
     public static final float HEIGHT = 1f;
     public static final float WIDTH = 1f;
-    public float STRENGTH = 15f;
-    public float RANGE = 3f;
-    public float RATE = .2f;
+    public float STRENGTH = 20f;
+    public float RANGE = 2f;
+    public float RATE = .5f;
     public float currentStrength;
-    public float POWER = .5f;
+    public float POWER = 1f;
     public float stateTime = 0f;
     private boolean isAlive = true;
     public int level=1;
-    public float SPEED = 2f;
+    public float SPEED = 1f;
     public float lastFireTime=0f;
     
     Vector2 position = new Vector2();

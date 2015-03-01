@@ -3,12 +3,14 @@ Make it in to a presentable state.
 This iteration:
 	Implement save functionality. (1)
 	Implement level functionality. (2)
+	Implement standard timing and thus tune resources at start.
 	You need to go to a specific level, to pass one level. In next level new map, 
 	with different enemy attacks. You need energy to go to next level. Once you reach 
 	10 levels game ends. 
 	Give some motivation to people to play other newer levels. Like new updates, new type of enemies etc. 
 	Implement rainy season, where your units slow down. 
-	
+	Start with small map, let map get bigger as milestones are reached.
+
 Ideas for next iteration: 
 
 	You need to increase your population.

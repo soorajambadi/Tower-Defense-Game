@@ -8,7 +8,10 @@ public class DefenseTower extends Tower{
 	boolean isPowered = true;
 	
 	public DefenseTower(Vector2 pos) {
-			super(pos);
+		super(pos);
+        super.STRENGTH = 30f;
+        super.currentStrength = 30f;
+        super.POWER = 10f;
 	}
 
     public DefenseTower()

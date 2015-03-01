@@ -9,10 +9,9 @@ public class TownCentre extends Tower {
 
 	 public static final float HEIGHT = 2f;
 	 public static final float WIDTH = 2f;
-	 public float RANGE = 3f;
+	 public float RANGE = 0f;
 	 public float STRENGTH = 7f;
 	 public int level=1;
-	 public float POWER=2f;
 	 public float levelUpgradeCost = 250f;
 	 public int UID=-1;
 	 private float totalSteam;
@@ -42,9 +41,11 @@ public class TownCentre extends Tower {
 
 	 public TownCentre(Vector2 pos) {
 		super(pos);
-		totalSteam = 1000f;
+		totalSteam = 300f;
 		enemiesFaced = 0;
          name = "tower0";
+         super.POWER = 0f;
+         super.RANGE = 0f;
 	 }
 	 
 	 public void addEnemiesFaced(int delta) {

@@ -14,8 +14,8 @@ public class Tower extends Entity {
     public static final float HEIGHT = 1f;
     public static final float WIDTH = 1f;
     public float RANGE = 3f;
-    public float STRENGTH = 50f;
-    public float RATE = .2f;
+    public float STRENGTH = 5f;
+    public float RATE = 2f;
     public float currentStrength;
     public static float STEAMCONSUMPTION=.2f;
     public float lastFireTime=0;
@@ -43,7 +43,7 @@ public class Tower extends Entity {
     public static int lastUID=0;
     public int UID;
     public int level=1;
-	public float POWER=.5f;
+	public float POWER=0f;
 	public float levelUpgradeCost =50f;
 	public float towerCost=200f;
 	public float productionRate = 1f;
